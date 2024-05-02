@@ -1,0 +1,38 @@
+<div
+  class="container d-flex align-items-center justify-content-center min-vh-100"
+>
+  <div class="card" style="width: 64rem">
+    <div class="card-body">
+      <h5 class="card-title m-3 text-center">{{ title }}</h5>
+      <div class="row gap-3 m-3">
+        <div class="row align-items-center">
+          <div class="col-4">
+            <h5>Total Mens:</h5>
+          </div>
+          <div class="col-8">
+            <app-progress-bar
+              [total]="percentage.totalMens"
+              [percentage]="percentage.percentageMen"
+            />
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-4">
+            <h5>Total Womens:</h5>
+          </div>
+          <div class="col-8">
+            <app-progress-bar
+              [total]="percentage.totalWomens"
+              [percentage]="percentage.percentageWomen"
+            />
+          </div>
+        </div>
+      </div>
+      <h5 class="m-3 text-center">User Data</h5>      
+      <button class="btn btn-primary mb-3" (click)="GetNewUsers()">Get New Users</button>
+      <app-table [users]="users" />
+    </div>
+  </div>
+</div>
+
+<router-outlet />

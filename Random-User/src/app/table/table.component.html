@@ -1,0 +1,39 @@
+<ng-container *ngIf="currentPageUsers.length > 0; else noItems">
+  <div class="overflow-auto" style="height: 200px">
+    <table class="table table-dark table-striped text-center">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>City</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of currentPageUsers">
+          <td>{{ user.Name }}</td>
+          <td>{{ user.Gender }}</td>
+          <td>{{ user.City }}</td>
+          <td>
+            <a
+              routerLink="/user-info/{{user.Id == null ? user.Name : user.Id}}"
+              routerLinkActive="active"
+              class="btn btn-info"
+              ><i class="bi bi-eye-fill"></i
+            ></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
+<ng-template #noItems>
+  <p class="text-center">No Data</p>
+</ng-template>
+<mat-paginator
+  [length]="totalItems"
+  [pageSize]="itemsPerPage"
+  [pageIndex]="currentPageIndex"
+  (page)="onPageChange($event)"
+>
+</mat-paginator>
